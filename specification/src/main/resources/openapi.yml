@@ -45,7 +45,7 @@ components:
             validDocumentRecipientList:
               type: array
               items:
-                $ref: '#/components/schemas/ValidDocumentRecipientList'
+                $ref: '#/components/schemas/ValidDocumentRecipient'
             addenda:
               type: array
               items:
@@ -89,7 +89,7 @@ components:
           type: string
         sendingChannel:
           type: string
-    ValidDocumentRecipientList:
+    ValidDocumentRecipient:
       type: object
       properties:                 
         documentRecipient:
@@ -131,6 +131,8 @@ components:
       properties:
         simpleCommunicationDocOverview:
           $ref: '#/components/schemas/SimpleCommunicationDocOverview'
+        subNumber:
+          type: string  
     SimpleCommunicationDocOverview:      
       type: object    
       properties:
@@ -140,7 +142,7 @@ components:
           type: object    
           properties:
             validDocumentRecipient:
-              $ref: '#/components/schemas/ValidDocumentRecipientList'
+              $ref: '#/components/schemas/ValidDocumentRecipient'
         addenda:
           $ref: '#/components/schemas/Addenda'
         subNumber:
