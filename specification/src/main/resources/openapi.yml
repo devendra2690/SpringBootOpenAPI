@@ -44,6 +44,34 @@ paths:
         '404':  
           description: Details not found
       x-codegen-request-body-name: body
+  /User/{username}:    
+    get:
+      tags:
+        - User
+      summary: Fetch User Details
+      description: Fetch User Details
+      operationId: user
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+          description: The user name
+      responses:
+        '200': 
+          description:  Successful operation
+          content:
+            application/json: 
+              schema:
+                type: object
+                properties:
+                $ref: '#/components/schemas/User'  
+        '400':  
+          description: Invalid Username supplied 
+        '404':  
+          description: User Details not found
+      x-codegen-request-body-name: body
 components:
   schemas:
     Value:
@@ -200,3 +228,65 @@ components:
           type: string
         subType:  
           type: string      
+    User:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/Result'
+        value:
+          $ref: '#/components/schemas/UserValue'
+    Result:    
+      type: object
+      properties:
+        code:
+          type: string
+        metadata:
+          type: array
+          items:
+            type: string
+    UserValue:
+      type: object
+      properties:
+        loginName:
+          type: string
+        userNumber:  
+          type: string
+        fullName:
+          type: string
+        userName:     
+          type: string
+        displayName:
+          type: string
+        firstName:   
+          type: string
+        lastName:   
+          type: string
+        email:
+          type: string
+        department:   
+          type: string
+        languageCode: 
+          type: string
+        managerName:
+          type: string
+        managerUserNumber:
+          type: string
+        maximumApprovalAmount:
+          type: string
+        maximumPaymentAmount:
+          type: string
+        kulanzId:
+          type: string
+        verificatorLoginName:
+          type: string
+        verificatorUserNumber:
+          type: string
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    Group:
+      type: object
+      properties:
+        id:
+          type: string                     
